@@ -1,0 +1,10 @@
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* [data-slot="dialog-content"] {
+  max-width: 60vw !important;
+} */

@@ -1,0 +1,14 @@
+/* Scrollbar styles */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Dialog content max-width customization */
+[data-slot='dialog-content'] {
+  max-width: 60vw !important;
+}

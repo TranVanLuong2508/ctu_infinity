@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thông báo sự kiện mới</title>
+</head>
+
+<body style="margin:0;padding:0;background-color:#f0f2f5;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:12px;
+                      box-shadow:0 2px 12px rgba(0,0,0,0.08);overflow:hidden;">
+
+          <!-- Header -->
+          <tr>
+            <td style="background:linear-gradient(135deg,#1a56db 0%,#1e429f 100%);
+                       padding:32px 40px;text-align:center;">
+              <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:700;letter-spacing:0.5px;">
+                CTU Infinity
+              </h1>
+              <p style="margin:8px 0 0;color:#bfdbfe;font-size:13px;">
+                Hệ thống quản lý điểm rèn luyện sinh viên
+              </p>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:36px 40px;">
+
+              <h2 style="margin:0 0 16px;color:#111827;font-size:18px;font-weight:600;">
+                Có sự kiện mới phù hợp với bạn!
+              </h2>
+
+              <p style="margin:0 0 12px;color:#374151;font-size:15px;line-height:1.6;">
+                Xin chào <strong>{{studentName}}</strong>,
+              </p>
+
+              <!-- Match reason block -->
+              {{#if isCriteriaMatch}}
+              <p style="margin:0 0 20px;color:#374151;font-size:15px;line-height:1.6;">
+                Hệ thống phát hiện một sự kiện vừa được duyệt phù hợp với
+                <strong>tiêu chí</strong> bạn đang theo dõi:
+                <strong style="color:#1a56db;">{{matchedValueName}}</strong>.
+              </p>
+              {{else}}
+              <p style="margin:0 0 20px;color:#374151;font-size:15px;line-height:1.6;">
+                Hệ thống phát hiện một sự kiện vừa được duyệt phù hợp với
+                <strong>danh mục</strong> bạn đang theo dõi:
+                <strong style="color:#1a56db;">{{matchedValueName}}</strong>.
+              </p>
+              {{/if}}
+
+              <!-- Event info card -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f8fafc;border-left:4px solid #1a56db;
+                            border-radius:0 8px 8px 0;margin-bottom:28px;">
+                <tr>
+                  <td style="padding:20px 24px;">
+                    <p style="margin:0 0 10px;color:#111827;font-size:15px;font-weight:700;">
+                      {{eventName}}
+                    </p>
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td style="padding:3px 0;color:#6b7280;font-size:13px;width:110px;">
+                          📅 Thời gian:
+                        </td>
+                        <td style="padding:3px 0;color:#111827;font-size:13px;">
+                          {{eventDate}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:3px 0;color:#6b7280;font-size:13px;">
+                          📍 Địa điểm:
+                        </td>
+                        <td style="padding:3px 0;color:#111827;font-size:13px;">
+                          {{eventLocation}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:3px 0;color:#6b7280;font-size:13px;">
+                          🏛️ Ban tổ chức:
+                        </td>
+                        <td style="padding:3px 0;color:#111827;font-size:13px;">
+                          {{organizerName}}
+                        </td>
+                      </tr>
+                      {{#if criteriaName}}
+                      <tr>
+                        <td style="padding:3px 0;color:#6b7280;font-size:13px;">
+                          📋 Tiêu chí:
+                        </td>
+                        <td style="padding:3px 0;color:#111827;font-size:13px;">
+                          {{criteriaName}}
+                        </td>
+                      </tr>
+                      {{/if}}
+                      <tr>
+                        <td style="padding:3px 0;color:#6b7280;font-size:13px;">
+                          ⭐ Điểm rèn luyện:
+                        </td>
+                        <td style="padding:3px 0;color:#1a56db;font-size:13px;font-weight:700;">
+                          +{{score}} điểm
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- CTA Button -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td style="border-radius:8px;background:#1a56db;">
+                    <a href="{{eventUrl}}" target="_blank" style="display:inline-block;padding:14px 28px;color:#ffffff;
+                              font-size:14px;font-weight:600;text-decoration:none;
+                              border-radius:8px;letter-spacing:0.3px;">
+                      Xem chi tiết sự kiện →
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background:#f8fafc;padding:20px 40px;border-top:1px solid #e5e7eb;">
+              <p style="margin:0;color:#9ca3af;font-size:12px;line-height:1.6;text-align:center;">
+                Email này được gửi tự động vì bạn đã đăng ký theo dõi trên
+                <strong>CTU Infinity</strong>.<br />
+                Vui lòng không reply trực tiếp email này.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
