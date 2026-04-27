@@ -1,0 +1,420 @@
+/* AI DROPDOWN - Top Left */
+.ai-dropdown-container {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 100;
+}
+
+.ai-dropdown {
+    background: oklch(0.28 0.08 250);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    min-width: 180px;
+    box-shadow: 0 2px 8px rgba(0, 61, 122, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ai-dropdown:hover:not(:disabled) {
+    background: oklch(0.35 0.1 250);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 61, 122, 0.3);
+}
+
+.ai-dropdown:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ai-dropdown option {
+    background: oklch(0.28 0.08 250);
+    color: white;
+    padding: 0.5rem;
+}
+
+/* AI PROMPT BAR - Bottom */
+.ai-prompt-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    border-radius: 0 0 12px 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 50;
+}
+
+.ai-prompt-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.ai-prompt-input {
+    flex: 1;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ai-prompt-input:focus {
+    border-color: oklch(0.28 0.08 250);
+    box-shadow: 0 0 0 3px oklch(0.28 0.08 250 / 0.15);
+}
+
+.ai-prompt-input:disabled {
+    background: #f3f4f6;
+    cursor: not-allowed;
+}
+
+.ai-prompt-submit {
+    background: oklch(0.28 0.08 250);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.ai-prompt-submit:hover:not(:disabled) {
+    background: oklch(0.35 0.1 250);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px oklch(0.28 0.08 250 / 0.3);
+}
+
+.ai-prompt-submit:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* Loading Overlay */
+.ai-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 12px;
+    z-index: 200;
+}
+
+.spinner-small {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e5e7eb;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Editor Container - Updated */
+.tiptap-editor-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    overflow: visible;
+    position: relative;
+    padding-bottom: 70px;
+    /* Space for bottom prompt bar */
+}
+
+/* Toolbar Styles */
+.editor-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+    padding-top: 4rem;
+    /* Space for dropdown */
+    background: linear-gradient(to bottom, #f9fafb, #f3f4f6);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.toolbar-group {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.toolbar-divider {
+    width: 1px;
+    background: #d1d5db;
+    margin: 0 0.5rem;
+}
+
+.editor-toolbar button {
+    padding: 0.5rem 0.75rem;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editor-toolbar button:hover {
+    background: oklch(0.95 0.01 250);
+    border-color: oklch(0.5 0.08 250);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 61, 122, 0.1);
+}
+
+.editor-toolbar button.is-active {
+    background: oklch(0.28 0.08 250);
+    color: white;
+    border-color: oklch(0.25 0.08 250);
+}
+
+/* Editor Content */
+.editor-content-wrapper {
+    padding: 2rem;
+    min-height: 400px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.ProseMirror {
+    outline: none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #9ca3af;
+    pointer-events: none;
+    height: 0;
+}
+
+/* Typography */
+.ProseMirror h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.ProseMirror h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: #1f2937;
+}
+
+.ProseMirror h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+
+.ProseMirror p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    color: #4b5563;
+}
+
+.ProseMirror strong {
+    font-weight: 700;
+    color: #111827;
+}
+
+.ProseMirror em {
+    font-style: italic;
+}
+
+.ProseMirror u {
+    text-decoration: underline;
+}
+
+/* Lists */
+.ProseMirror ul,
+.ProseMirror ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.ProseMirror li {
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+}
+
+/* Code Blocks */
+.ProseMirror pre {
+    background: #1f2937;
+    color: #f3f4f6;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.ProseMirror code {
+    background: #f3f4f6;
+    color: #dc2626;
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+.ProseMirror pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+/* Links */
+.ProseMirror a {
+    color: oklch(0.28 0.08 250);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ProseMirror a:hover {
+    color: oklch(0.35 0.1 250);
+}
+
+/* Images */
+.ProseMirror img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+/* Highlight */
+.ProseMirror mark {
+    background: #fef08a;
+    padding: 0.125rem 0.25rem;
+    border-radius: 2px;
+}
+
+/* Loading State */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e5e7eb;
+    border-top-color: oklch(0.28 0.08 250);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tiptap-editor-container {
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    .editor-toolbar {
+        padding: 0.75rem;
+        padding-top: 3.5rem;
+    }
+
+    .editor-content-wrapper {
+        padding: 1rem;
+    }
+
+    .ai-dropdown-container {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+
+    .ai-dropdown {
+        min-width: 150px;
+        font-size: 0.8125rem;
+    }
+
+    .ai-prompt-bar {
+        padding: 0.75rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .tiptap-editor-container {
+        background: #1f2937;
+    }
+
+    .editor-toolbar {
+        background: linear-gradient(to bottom, #111827, #1f2937);
+        border-bottom-color: #374151;
+    }
+
+    .editor-toolbar button {
+        background: #374151;
+        border-color: #4b5563;
+        color: #f3f4f6;
+    }
+
+    .editor-toolbar button:hover {
+        background: #4b5563;
+        border-color: #6b7280;
+    }
+
+    .ProseMirror h1,
+    .ProseMirror h2,
+    .ProseMirror h3,
+    .ProseMirror p,
+    .ProseMirror li {
+        color: #f3f4f6;
+    }
+
+    .ai-prompt-bar {
+        background: #111827;
+        border-top-color: #374151;
+    }
+
+    .ai-prompt-input {
+        background: #374151;
+        border-color: #4b5563;
+        color: #f3f4f6;
+    }
+
+    .ai-loading-overlay {
+        background: rgba(31, 41, 55, 0.9);
+    }
+}
